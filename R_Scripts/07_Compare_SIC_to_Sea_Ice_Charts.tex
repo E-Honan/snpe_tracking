@@ -1,0 +1,293 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={07\_Compare\_SIC\_to\_Sea\_Ice\_Charts},
+  pdfauthor={Ellie Honan},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{07\_Compare\_SIC\_to\_Sea\_Ice\_Charts}
+\author{Ellie Honan}
+\date{2023-03-07}
+
+\begin{document}
+\maketitle
+
+\hypertarget{comparison-of-passive-microwave-sea-ice-concentration-data-to-sea-ice-chart-data.}{%
+\section{Comparison of passive microwave sea ice concentration data to
+sea ice chart
+data.}\label{comparison-of-passive-microwave-sea-ice-concentration-data-to-sea-ice-chart-data.}}
+
+Here, I am comparing sea ice concentration readings from 2 sources:
+Passive Microwave data from AMSR2, and Sea Ice Charts from AARI
+available from one day in my tracked period.
+
+I have subset my trips to retain the points from January 21st 2022 only,
+and have both types of sea ice data from the same date. I extracted the
+AMSR2 data using the \texttt{raster} function \texttt{extract} and the
+sea ice chart data was extracted in QGIS.
+
+\hypertarget{sea-ice-chart-for-2022-01-22}{%
+\subsection{Sea Ice Chart for
+2022-01-22:}\label{sea-ice-chart-for-2022-01-22}}
+
+\href{http://ice.aari.aq/antice/2022/01/20220121_nic/nic_antice_20220121_ct.png}{\includegraphics{Trip_Covariates/Sea_Ice_Chart_Plots/nic_antice_20220121_ct.png}}
+
+This chart provides information on ice type, and is based on AMSR2 data
+combined with satellite imagery.
+
+\hypertarget{sea-ice-concentration-from-amsr2-for-the-same-date}{%
+\subsection{Sea ice concentration from AMSR2 for the same
+date:}\label{sea-ice-concentration-from-amsr2-for-the-same-date}}
+
+\includegraphics{Trip_Covariates/Sea_Ice_Chart_Plots/AMSR2_2022_01_22.png}
+
+\hypertarget{set-up}{%
+\subsubsection{Set up:}\label{set-up}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#read in trips}
+\NormalTok{comp }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/wclp88/OneDrive {-} Durham University/R\_Projects/Honan\_SNPE\_Tracking\_2023/Trip\_Covariates/07\_Q\_Amsr2\_vs\_charts.csv"}\NormalTok{)}
+
+ \CommentTok{\#what birds}
+\NormalTok{birdSV }\OtherTok{=} \FunctionTok{unique}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{BIRDID)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{plotting-the-mean-sea-ice-concentration-used-on-january-21st-2022-by-6-snow-petrels-from-sv.}{%
+\subsection{Plotting the mean sea ice concentration used on January
+21st, 2022 by 6 snow petrels from
+SV.}\label{plotting-the-mean-sea-ice-concentration-used-on-january-21st-2022-by-6-snow-petrels-from-sv.}}
+
+\hypertarget{concentration-as-read-from-the-sea-ice-chart-found-here-aari}{%
+\subsubsection{\texorpdfstring{Concentration as read from the sea ice
+chart found here:
+\href{http://ice.aari.aq/antice/2022/01/20220121_nic/}{AARI}}{Concentration as read from the sea ice chart found here: AARI}}\label{concentration-as-read-from-the-sea-ice-chart-found-here-aari}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sea ice chart concentration (observed}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{)\{}
+  \CommentTok{\#for(i in 2:length(bird))\{}
+  \CommentTok{\#this makes the data {-} using the range of the minumum and maximum sst for the entire tracked period}
+\NormalTok{  tmpSV}\OtherTok{=}\FunctionTok{density}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{CT[comp}\SpecialCharTok{$}\NormalTok{BIRDID }\SpecialCharTok{==}\NormalTok{ birdSV[i]], }\AttributeTok{bw =} \DecValTok{8}\NormalTok{, }\AttributeTok{na.rm=}\NormalTok{T, }\AttributeTok{from=}\FunctionTok{min}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{CT,}\AttributeTok{na.rm=}\NormalTok{T), }\AttributeTok{to=}\FunctionTok{max}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{CT,}\AttributeTok{na.rm=}\NormalTok{T))}
+  \CommentTok{\#x here is the range of SST (regularised to intervals)}
+  \CommentTok{\#note {-} str = structure function}
+  \FunctionTok{print}\NormalTok{(tmpSV}\SpecialCharTok{$}\NormalTok{bw)}
+  \CommentTok{\#saves the x value}
+\NormalTok{  CTmy.xSV}\OtherTok{=}\NormalTok{tmpSV}\SpecialCharTok{$}\NormalTok{x}
+  \CommentTok{\#pulls out the y value and standardises it to sum to 1{-} y is the density for individuals in the loop}
+\NormalTok{  tmpSV }\OtherTok{=}\NormalTok{ tmpSV}\SpecialCharTok{$}\NormalTok{y}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(tmpSV}\SpecialCharTok{$}\NormalTok{y)}
+  \CommentTok{\#for the first itteration {-}renaming standardised y values then on subsequent loops {-} this makes a matrix of a column for each individual}
+  \ControlFlowTok{if}\NormalTok{(i}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)\{tmpSV2 }\OtherTok{=}\NormalTok{ tmpSV\}}\ControlFlowTok{else}\NormalTok{\{tmpSV2}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(tmpSV2,tmpSV)\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+## [1] 8
+## [1] 8
+## [1] 8
+## [1] 8
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#takes the matrix of a column for each bird {-} across the rows {-} take the mean (1 = apply across rows)}
+\NormalTok{CTtmpSV2}\OtherTok{=}\FunctionTok{apply}\NormalTok{(tmpSV2,}\DecValTok{1}\NormalTok{,mean)}
+\FunctionTok{plot}\NormalTok{(CTmy.xSV,CTtmpSV2, }\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(CTmy.xSV,tmpSV2[,}\DecValTok{1}\NormalTok{],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}grey\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{07_Compare_SIC_to_Sea_Ice_Charts_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example plot {-} creates a blank plot with full range {-} n is base r for blank plot}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{range}\NormalTok{(CTmy.xSV),}\FunctionTok{range}\NormalTok{(tmpSV2),}\StringTok{\textquotesingle{}n\textquotesingle{}}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"AMSR2 vs Charts on Jan 21 (SV)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(tmpSV2)) }\FunctionTok{points}\NormalTok{(CTmy.xSV,tmpSV2[,i],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}grey\textquotesingle{}}\NormalTok{)}
+\CommentTok{\#points(CTmy.xSV,CTtmpSV2, \textquotesingle{}l\textquotesingle{}, col = "red")}
+\FunctionTok{points}\NormalTok{(CTmy.xSV,CTtmpSV2, }\AttributeTok{type =} \StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{,  }\AttributeTok{lty =} \DecValTok{1}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{07_Compare_SIC_to_Sea_Ice_Charts_files/figure-latex/unnamed-chunk-3-2.pdf}
+
+\hypertarget{concentration-as-read-from-the-sea-ice-chart-found-here-amsr2}{%
+\subsubsection{\texorpdfstring{Concentration as read from the sea ice
+chart found here:
+\href{https://seaice.uni-bremen.de/databrowser/\#day=6\&month=2\&year=2023\&img=\%7B\%22image\%22\%3A\%22image-1\%22\%2C\%22product\%22\%3A\%22AMSR\%22\%2C\%22type\%22\%3A\%22visual\%22\%2C\%22region\%22\%3A\%22Antarctic3125\%22\%7D}{AMSR2}}{Concentration as read from the sea ice chart found here: AMSR2}}\label{concentration-as-read-from-the-sea-ice-chart-found-here-amsr2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Passive Microwave Concentration (AMSR2)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{)\{}
+  \CommentTok{\#for(i in 2:length(bird))\{}
+  \CommentTok{\#this makes the data {-} using the range of the minumum and maximum sst for the entire tracked period}
+\NormalTok{  sicSV}\OtherTok{=}\FunctionTok{density}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{concentration[comp}\SpecialCharTok{$}\NormalTok{BIRDID }\SpecialCharTok{==}\NormalTok{ birdSV[i]], }\AttributeTok{bw =} \DecValTok{10}\NormalTok{, }\AttributeTok{na.rm=}\NormalTok{T, }\AttributeTok{from=}\FunctionTok{min}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{concentration,}\AttributeTok{na.rm=}\NormalTok{T), }\AttributeTok{to=}\FunctionTok{max}\NormalTok{(comp}\SpecialCharTok{$}\NormalTok{concentration,}\AttributeTok{na.rm=}\NormalTok{T))}
+  \CommentTok{\#x here is the range of SST (regularised to intervals)}
+  \CommentTok{\#note {-} str = structure function}
+  \FunctionTok{print}\NormalTok{(sicSV}\SpecialCharTok{$}\NormalTok{bw)}
+  \CommentTok{\#saves the x value}
+\NormalTok{  concmy.xSV}\OtherTok{=}\NormalTok{sicSV}\SpecialCharTok{$}\NormalTok{x}
+  \CommentTok{\#pulls out the y value and standardises it to sum to 1{-} y is the density for individuals in the loop}
+\NormalTok{  sicSV }\OtherTok{=}\NormalTok{ sicSV}\SpecialCharTok{$}\NormalTok{y}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(sicSV}\SpecialCharTok{$}\NormalTok{y)}
+  \CommentTok{\#for the first itteration {-}renaming standardised y values then on subsequent loops {-} this makes a matrix of a column for each individual}
+  \ControlFlowTok{if}\NormalTok{(i}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)\{sicSV2 }\OtherTok{=}\NormalTok{ sicSV\}}\ControlFlowTok{else}\NormalTok{\{sicSV2}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(sicSV2,sicSV)\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+## [1] 10
+## [1] 10
+## [1] 10
+## [1] 10
+## [1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#takes the matrix of a column for each bird {-} across the rows {-} take the mean (1 = apply across rows)}
+\NormalTok{conctmpSV2}\OtherTok{=}\FunctionTok{apply}\NormalTok{(sicSV2,}\DecValTok{1}\NormalTok{,mean)}
+\FunctionTok{plot}\NormalTok{(concmy.xSV,conctmpSV2, }\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(concmy.xSV,sicSV2[,}\DecValTok{1}\NormalTok{],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}grey\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{07_Compare_SIC_to_Sea_Ice_Charts_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example plot {-} creates a blank plot with full range {-} n is base r for blank plot}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{range}\NormalTok{(concmy.xSV),}\FunctionTok{range}\NormalTok{(sicSV2),}\StringTok{\textquotesingle{}n\textquotesingle{}}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"AMSR2 vs Charts on Jan 21 (SV)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(sicSV2)) }\FunctionTok{points}\NormalTok{(concmy.xSV,sicSV2[,i],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}grey\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(concmy.xSV,conctmpSV2, }\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkcyan"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(concmy.xSV,conctmpSV2, }\AttributeTok{type =} \StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{,  }\AttributeTok{lty =} \DecValTok{1}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkcyan"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{07_Compare_SIC_to_Sea_Ice_Charts_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot both}
+
+\DocumentationTok{\#\#\# combine}
+
+\CommentTok{\#CT range is bigger so use that to set extent of plot}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{range}\NormalTok{(CTmy.xSV),}\FunctionTok{range}\NormalTok{(tmpSV2),}\StringTok{\textquotesingle{}n\textquotesingle{}}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"AMSR2 vs Sea Ice Chart concentration for SV birds on 21/01/22"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Density"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(sicSV2)) }\FunctionTok{points}\NormalTok{(concmy.xSV,sicSV2[,i],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}cadetblue\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(tmpSV2)) }\FunctionTok{points}\NormalTok{(CTmy.xSV,tmpSV2[,i],}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}coral\textquotesingle{}}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(CTmy.xSV,CTtmpSV2, }\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(concmy.xSV,conctmpSV2, }\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkcyan"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\DecValTok{25}\NormalTok{, }\FloatTok{0.0085}\NormalTok{, }\AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"Passive Microwave (AMSR2)"}\NormalTok{, }\StringTok{"Sea Ice Chart"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"cadetblue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{07_Compare_SIC_to_Sea_Ice_Charts_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\end{document}

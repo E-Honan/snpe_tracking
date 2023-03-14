@@ -37,3 +37,16 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Prevent .csv and .tiff being uploaded to git
+.csv
+.tiff
+.tif
+.nc
+
+Environmental_Data/
+Trip_Covariates/
+Raw_Tracks/
+Meta_Data/
+Processed_Trips/
+

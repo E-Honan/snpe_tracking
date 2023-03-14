@@ -1,0 +1,126 @@
+---
+title: "07_SIC_SIT_Charts"
+author: Ellie Honan
+output: html_document
+date: "2023-03-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Comparing sea ice readings from AMSR2 passive microwave data (%) to sea ice charts designed for shipping.
+
+## Load libraries
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(raster)
+library(terra)
+```
+
+## Sub-setting tracks to days I have charts from
+
+| Date       | Note |
+|------------|------|
+| 2022-01-13 |      |
+| 2022-01-21 |      |
+| 2022-01-27 |      |
+| 2022-02-03 |      |
+| 2022-02-10 |      |
+
+: Dates on which charts are available
+
+### 
+
+```{r}
+# load data 
+trips_to_split <- read.csv("Trip_Covariates/05_Trips_with_SIC.csv")
+
+# sub-set by data 
+jan13 <- trips_to_split %>% 
+        filter(DATE == "13/01/2022")
+jan21 <- trips_to_split %>% 
+        filter(DATE == "21/01/2022")
+jan27 <- trips_to_split %>% 
+        filter(DATE == "27/01/2022")
+feb03 <- trips_to_split %>% 
+        filter(DATE == "03/02/2022")
+feb10 <- trips_to_split %>% 
+        filter(DATE == "10/02/2022")
+
+# plot to check
+plot(jan27$LON, jan27$LAT)
+  
+```
+
+## Make the trip dataframes spatial
+
+```{r function to convert csv to spatial points df}
+csv_as_SpatialPoints <- function(df) {
+
+df <- as.data.frame(df)
+dfcoord <- cbind(df$LON,df$LAT)
+df_sp <- SpatialPoints(dfcoord)
+return(df)
+}
+```
+
+```{r}
+
+jan13_sp <- csv_as_SpatialPoints(jan13)
+jan21_sp <- csv_as_SpatialPoints(jan21)
+jan27_sp <- csv_as_SpatialPoints(jan27)
+feb03_sp <- csv_as_SpatialPoints(feb03)
+feb10_sp <- csv_as_SpatialPoints(feb10)
+```
+
+```{r}
+#set the CRS
+crsRef <- CRS('+proj=longlat +datum=WGS84')
+
+jan13_sp <- SpatialPoints(jan13_sp, proj4string = crsRef)
+jan21_sp <- SpatialPoints(jan21_sp, proj4string = crsRef)
+jan27_sp <- SpatialPoints(jan27_sp, proj4string = crsRef)
+feb03_sp <- SpatialPoints(feb03_sp, proj4string = crsRef)
+feb10_sp <- SpatialPoints(feb10_sp, proj4string = crsRef)
+```
+
+## Now, I want to load in the AMSR2 rasters for these dates
+
+```{r}
+jan13_amsr2 <- raster("Environmental_Data/Sea_Ice/AMSR2/asi-AMSR2-s3125-20220113-v5.4.tif")
+jan21_amsr2 <- raster("Environmental_Data/Sea_Ice/AMSR2/asi-AMSR2-s3125-20220121-v5.4.tif")
+jan27_amsr2 <- raster("Environmental_Data/Sea_Ice/AMSR2/asi-AMSR2-s3125-20220127-v5.4.tif")
+feb03_amsr2 <- raster("Environmental_Data/Sea_Ice/AMSR2/asi-AMSR2-s3125-20220203-v5.4.tif")
+feb10_amsr2 <- raster("Environmental_Data/Sea_Ice/AMSR2/asi-AMSR2-s3125-20220210-v5.4.tif")
+
+```
+
+### Extract the SIC for those dates only
+
+```{r}
+jan13_SIC <- terra::extract(jan13_amsr2, jan13_sp)
+jan21_SIC <- terra::extract(jan21_amsr2, jan21_sp)
+jan27_SIC <- terra::extract(jan27_amsr2, jan27_sp)
+feb03_SIC <- terra::extract(feb03_amsr2, feb03_sp)
+feb10_SIC <- terra::extract(feb10_amsr2, feb10_sp)
+```
+
+## 
+```{r write a test file to csv to load into QGIS}
+
+jan13_csv <- as.data.frame(jan13_SIC)
+jan13_df <- as.data.frame(jan13)
+
+
+write.csv(jan13_SIC, "Trip_Covariates/Ind_Days/jan13_22_SIC.csv")
+
+write.csv(jan13, "Trip_Covariates/Ind_Days/jan13_22.csv")
+write.csv(jan27, "Trip_Covariates/Ind_Days/jan27_22_SIC.csv")
+write.csv(jan21, "Trip_Covariates/Ind_Days/jan21_22_SIC.csv")
+```
+
+
+

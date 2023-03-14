@@ -1,0 +1,123 @@
+---
+title: "07_Compare_SIC_to_Sea_Ice_Charts"
+author: "Ellie Honan"
+date: "2023-03-07"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Comparison of passive microwave sea ice concentration data to sea ice chart data.
+
+Here, I am comparing sea ice concentration readings from 2 sources: Passive Microwave data from AMSR2, and Sea Ice Charts from AARI available from one day in my tracked period.
+
+I have subset my trips to retain the points from January 21st 2022 only, and have both types of sea ice data from the same date. I extracted the AMSR2 data using the `raster` function `extract` and the sea ice chart data was extracted in QGIS.
+
+## Sea Ice Chart for 2022-01-22:
+
+[![](Trip_Covariates/Sea_Ice_Chart_Plots/nic_antice_20220121_ct.png)](http://ice.aari.aq/antice/2022/01/20220121_nic/nic_antice_20220121_ct.png)
+
+This chart provides information on ice type, and is based on AMSR2 data combined with satellite imagery.
+
+## Sea ice concentration from AMSR2 for the same date:
+
+![](Trip_Covariates/Sea_Ice_Chart_Plots/AMSR2_2022_01_22.png)
+
+### Set up:
+
+```{r}
+#read in trips
+comp <- read.csv("../Trip_Covariates/07_Q_Amsr2_vs_charts.csv")
+
+ #what birds
+birdSV = unique(comp$BIRDID)
+
+```
+
+## Plotting the mean sea ice concentration used on January 21st, 2022 by 6 snow petrels from SV.
+
+### Concentration as read from the sea ice chart found here: [AARI](http://ice.aari.aq/antice/2022/01/20220121_nic/)
+
+```{r}
+# Sea ice chart concentration (observed
+for(i in 1:6){
+  #for(i in 2:length(bird)){
+  #this makes the data - using the range of the minumum and maximum sst for the entire tracked period
+  tmpSV=density(comp$CT[comp$BIRDID == birdSV[i]], bw = 8, na.rm=T, from=min(comp$CT,na.rm=T), to=max(comp$CT,na.rm=T))
+  #x here is the range of SST (regularised to intervals)
+  #note - str = structure function
+  print(tmpSV$bw)
+  #saves the x value
+  CTmy.xSV=tmpSV$x
+  #pulls out the y value and standardises it to sum to 1- y is the density for individuals in the loop
+  tmpSV = tmpSV$y/sum(tmpSV$y)
+  #for the first itteration -renaming standardised y values then on subsequent loops - this makes a matrix of a column for each individual
+  if(i==1){tmpSV2 = tmpSV}else{tmpSV2=cbind(tmpSV2,tmpSV)}
+}
+```
+
+```{r}
+#takes the matrix of a column for each bird - across the rows - take the mean (1 = apply across rows)
+CTtmpSV2=apply(tmpSV2,1,mean)
+plot(CTmy.xSV,CTtmpSV2, 'l')
+points(CTmy.xSV,tmpSV2[,1],'l',col='grey')
+
+# Example plot - creates a blank plot with full range - n is base r for blank plot
+plot(range(CTmy.xSV),range(tmpSV2),'n', xlab = "AMSR2 vs Charts on Jan 21 (SV)", ylab = "Density")
+for(i in 1:ncol(tmpSV2)) points(CTmy.xSV,tmpSV2[,i],'l',col='grey')
+#points(CTmy.xSV,CTtmpSV2, 'l', col = "red")
+points(CTmy.xSV,CTtmpSV2, type = 'l', lwd = 2,  lty = 1, col = "red")
+```
+
+### Concentration as read from the sea ice chart found here: [AMSR2](https://seaice.uni-bremen.de/databrowser/#day=6&month=2&year=2023&img=%7B%22image%22%3A%22image-1%22%2C%22product%22%3A%22AMSR%22%2C%22type%22%3A%22visual%22%2C%22region%22%3A%22Antarctic3125%22%7D)
+
+```{r}
+# Passive Microwave Concentration (AMSR2)
+for(i in 1:6){
+  #for(i in 2:length(bird)){
+  #this makes the data - using the range of the minumum and maximum sst for the entire tracked period
+  sicSV=density(comp$concentration[comp$BIRDID == birdSV[i]], bw = 10, na.rm=T, from=min(comp$concentration,na.rm=T), to=max(comp$concentration,na.rm=T))
+  #x here is the range of SST (regularised to intervals)
+  #note - str = structure function
+  print(sicSV$bw)
+  #saves the x value
+  concmy.xSV=sicSV$x
+  #pulls out the y value and standardises it to sum to 1- y is the density for individuals in the loop
+  sicSV = sicSV$y/sum(sicSV$y)
+  #for the first itteration -renaming standardised y values then on subsequent loops - this makes a matrix of a column for each individual
+  if(i==1){sicSV2 = sicSV}else{sicSV2=cbind(sicSV2,sicSV)}
+}
+```
+
+```{r}
+
+#takes the matrix of a column for each bird - across the rows - take the mean (1 = apply across rows)
+conctmpSV2=apply(sicSV2,1,mean)
+plot(concmy.xSV,conctmpSV2, 'l')
+points(concmy.xSV,sicSV2[,1],'l',col='grey')
+
+# Example plot - creates a blank plot with full range - n is base r for blank plot
+plot(range(concmy.xSV),range(sicSV2),'n', xlab = "AMSR2 vs Charts on Jan 21 (SV)", ylab = "Density")
+for(i in 1:ncol(sicSV2)) points(concmy.xSV,sicSV2[,i],'l',col='grey')
+points(concmy.xSV,conctmpSV2, 'l', col = "darkcyan")
+points(concmy.xSV,conctmpSV2, type = 'l', lwd = 2,  lty = 1, col = "darkcyan")
+
+```
+
+```{r}
+# Plot both
+
+### combine
+
+#CT range is bigger so use that to set extent of plot
+plot(range(CTmy.xSV),range(tmpSV2),'n', xlab = "AMSR2 vs Sea Ice Chart concentration for SV birds on 21/01/22", ylab = "Density")
+for(i in 1:ncol(sicSV2)) points(concmy.xSV,sicSV2[,i],'l',col='cadetblue')
+for(i in 1:ncol(tmpSV2)) points(CTmy.xSV,tmpSV2[,i],'l',col='coral')
+points(CTmy.xSV,CTtmpSV2, 'l', col = "red", lwd = 2)
+points(concmy.xSV,conctmpSV2, 'l', col = "darkcyan", lwd = 2)
+legend(25, 0.0085, legend=c("Passive Microwave (AMSR2)", "Sea Ice Chart"),
+       col=c("cadetblue", "red"), lty=1, cex=0.8, lwd = 2)
+
+```
